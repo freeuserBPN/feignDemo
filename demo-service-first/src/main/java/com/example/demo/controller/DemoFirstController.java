@@ -34,13 +34,14 @@ public class DemoFirstController {
 		Application application = eurekaClient.getApplication("demo-service-second");
 		InstanceInfo instanceInfo = application.getInstances().get(0);
 		String url = "http://" + instanceInfo.getIPAddr() + ":" + instanceInfo.getPort() + "/" + "demosecond/greeting";
-				
+		System.out.println("via RestTemplate clients to get greetings....");
 		return restTemplate.getForObject(url, String.class);
 	}
 	
 	@GetMapping("/feign/greeting")
 	public String getGreetingViaFeign() {
 //		return "greetings from demo-service-first";
+		System.out.println("via Feign clients to get greetings....");
 		return iGreetingClient.getGreetingsFromSecondService();
 	}
 

@@ -10,6 +10,7 @@ public class DemoSecondController {
 	
 	@GetMapping("/greeting")
 	public String getGreetings() {
+		System.out.println("DemoSecondController getGreetings Method got called.");
 		return "greetings from demo-service-second";
 	}
 
